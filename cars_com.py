@@ -20,7 +20,7 @@ class CarsCom:
             Iterates over the saved car makes and models and generates a list of URLs.
     """
 
-    def __init__(self, zip_code, max_price, min_price, distance):
+    def __init__(self, zip_code: int = 85296, max_price: int = 10000, min_price: int = 0, distance: int = 50):
         self.zip_code = zip_code
         self.max_price = max_price
         self.min_price = min_price
@@ -34,7 +34,7 @@ class CarsCom:
             "subaru_outback": "subaru"
         }
 
-    def carscom_url_maker(self, make, model):
+    def url_maker(self, make: str, model: str) -> str:
         """
         Generates a Cars.com URL for a specific car make and model based on the provided search criteria.
 
@@ -47,7 +47,7 @@ class CarsCom:
         """
         return f"https://www.cars.com/shopping/results/?clean_title=true&dealer_id=&keyword=&list_price_max={self.max_price}&list_price_min={self.min_price}&makes[]={make}&maximum_distance={self.distance}&mileage_max=&models[]={model}&no_accidents=true&sort=best_match_desc&stock_type=all&year_max=&year_min=&zip={self.zip_code}"
 
-    def generate_urls(self):
+    def generate_urls(self) -> list[str]:
         """
         Iterates over the saved car makes and models and generates a list of URLs.
 
@@ -56,6 +56,6 @@ class CarsCom:
         """
         urls = []
         for model, make in self.carcom_car_ids.items():
-            url = self.carscom_url_maker(make=make, model=model)
+            url = self.url_maker(make=make, model=model)
             urls.append(url)
         return urls

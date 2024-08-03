@@ -20,7 +20,7 @@ class CarGurus:
             Iterates over the saved car IDs and generates a dictionary of car names and their corresponding URLs.
     """
 
-    def __init__(self, zip_code, max_price, min_price, distance):
+    def __init__(self, zip_code: int = 85296, max_price: int = 10000, min_price: int = 0, distance: int = 50):
         self.zip_code = zip_code
         self.max_price = max_price
         self.min_price = min_price
@@ -34,7 +34,7 @@ class CarGurus:
             "subaru_outback": 'd380'
         }
 
-    def cargurus_url_maker(self, car_id):
+    def url_maker(self, car_id: str) -> str:
         """
         Generates a CarGurus URL for a specific car ID based on the provided search criteria.
 
@@ -50,15 +50,15 @@ class CarGurus:
             self.distance}&minPrice={
                 self.min_price}&entitySelectingHelper.selectedEntity={car_id}"
 
-    def generate_urls(self):
+    def generate_urls(self) -> list[str]:
         """
         Iterates over the saved car IDs and generates a dictionary of car names and their corresponding URLs.
 
         Returns:
             dict: A dictionary where the keys are car names and the values are their corresponding URLs.
         """
-        urls = {}
-        for key, value in self.cargurus_car_ids.items():
-            url = self.cargurus_url_maker(car_id=value)
-            urls[key] = url
+        urls = []
+        for make_model, tag_id in self.cargurus_car_ids.items():
+            url = self.url_maker(car_id=tag_id)
+            urls.append(url)
         return urls

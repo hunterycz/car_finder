@@ -20,7 +20,7 @@ class AutoTrader:
             Iterates over the saved car IDs and generates a list of URLs.
     """
 
-    def __init__(self, zip_code, max_price, min_price, distance):
+    def __init__(self, zip_code: int = 85296, max_price: int = 10000, min_price: int = 0, distance: int = 50):
         self.zip_code = zip_code
         self.max_price = max_price
         self.min_price = min_price
@@ -34,7 +34,7 @@ class AutoTrader:
             "subaru/outback"
         ]
 
-    def autotrader_url_maker(self, car_id):
+    def url_maker(self, car_id: str) -> str:
         """
         Generates an AutoTrader URL for a specific car ID based on the provided search criteria.
 
@@ -46,7 +46,7 @@ class AutoTrader:
         """
         return f"https://www.autotrader.com/cars-for-sale/cars-between-{self.min_price}-and-{self.max_price}/{car_id}/gilbert-az?newSearch=true&searchRadius={self.distance}&vehicleHistoryType=NO_ACCIDENTS&vehicleHistoryType=CLEAN_TITLE&zip={self.zip_code}"
 
-    def generate_urls(self):
+    def generate_urls(self) -> list[str]:
         """
         Iterates over the saved car IDs and generates a list of URLs.
 
@@ -55,6 +55,6 @@ class AutoTrader:
         """
         urls = []
         for car in self.autotrader_car_ids:
-            url = self.autotrader_url_maker(car_id=car)
+            url = self.url_maker(car_id=car)
             urls.append(url)
         return urls
