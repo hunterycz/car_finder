@@ -1,0 +1,25 @@
+services:
+  flask-app:
+    build: .
+    ports:
+      - "500:500"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - webnet
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - flask-app
+    networks:
+      - webnet
+
+networks:
+  webnet:
