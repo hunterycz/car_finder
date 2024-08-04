@@ -3,20 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Car Search URLs</title>
+    <title>Hunters Used Car Helper</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script>
         function openUrls() {
+            console.log('Button clicked');
             fetch('/url_generator')
-                .then(response => response.json())
-                .then(urls => {
-                    urls.forEach(url => {
-                        window.open(url, '_blank');
+                .then(response => {
+                    console.log('Response received', response);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('URLs:', data);
+                    const list = document.getElementById('url-list');
+                    list.innerHTML = '';  // Clear existing list
+                    data.forEach(site => {
+                        const title = document.createElement('h2');
+                        title.textContent = site.name;
+                        list.appendChild(title);
+
+                        const ul = document.createElement('ul');
+                        site.urls.forEach(item => {
+                            const listItem = document.createElement('li');
+                            const link = document.createElement('a');
+                            link.href = item.url;
+                            link.target = '_blank';
+                            link.textContent = item.title;
+                            listItem.appendChild(link);
+                            ul.appendChild(listItem);
+                        });
+                        list.appendChild(ul);
                     });
-                });
+                })
+                .catch(error => console.error('Error:', error));
         }
     </script>
 </head>
 <body>
-    <button onclick="openUrls()">Open Car Search URLs</button>
+    <header>
+        <h1>Hunters Used Car Helper</h1>
+    </header>
+    <main>
+        <button onclick="openUrls()">Fetch Car Search URLs</button>
+        <div id="url-list"></div>
+    </main>
 </body>
 </html>
