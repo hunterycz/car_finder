@@ -78,3 +78,23 @@ class Edmunds:
             urls.append(url)
 
         return urls
+
+    def generate_urls_webpage(self) -> dict[str]:
+        """
+        Iterates over the saved car IDs and creates a dictionary format for 
+        the frontend to interpret and portray on the webpage.
+
+        Returns:
+            List: A list of dictionaries with the "title" and "Url" are saved.
+        """
+        urls = []
+        for model, make in self.edmunds_car_ids.items():
+            url = self.url_maker(make, model)
+            format_dict = {
+                "title": make.upper() + " " + model.upper(),
+                "url": url
+            }
+
+            urls.append(format_dict)
+
+        return urls

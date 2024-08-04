@@ -58,3 +58,24 @@ class AutoTrader:
             url = self.url_maker(car_id=car)
             urls.append(url)
         return urls
+
+    def generate_urls_webpage(self) -> dict[str]:
+        """
+        Iterates over the saved car IDs and creates a dictionary format for 
+        the frontend to interpret and portray on the webpage.
+
+        Returns:
+            List: A list of dictionaries with the "title" and "Url" are saved.
+        """
+        urls = []
+        for car in self.autotrader_car_ids:
+            format_dict = {}
+            url = self.url_maker(car_id=car)
+            format_dict = {
+                "title": car.upper(),
+                "url": url
+            }
+
+            urls.append(format_dict)
+
+        return urls

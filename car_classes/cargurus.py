@@ -44,11 +44,7 @@ class CarGurus:
         Returns:
             str: The generated URL for the car listing.
         """
-        return f"https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?maxAccidents=0&zip={
-            self.zip_code}&maxPrice={
-            self.max_price}&shopByTypes=NEAR_BY&distance={
-            self.distance}&minPrice={
-                self.min_price}&entitySelectingHelper.selectedEntity={car_id}"
+        return f"https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?maxAccidents=0&zip={self.zip_code}&maxPrice={self.max_price}&shopByTypes=NEAR_BY&distance={self.distance}&minPrice={self.min_price}&entitySelectingHelper.selectedEntity={car_id}"
 
     def generate_urls(self) -> list[str]:
         """
@@ -61,4 +57,24 @@ class CarGurus:
         for make_model, tag_id in self.cargurus_car_ids.items():
             url = self.url_maker(car_id=tag_id)
             urls.append(url)
+        return urls
+
+    def generate_urls_webpage(self) -> dict[str]:
+        """
+        Iterates over the saved car IDs and creates a dictionary format for 
+        the frontend to interpret and portray on the webpage.
+
+        Returns:
+            List: A list of dictionaries with the "title" and "Url" are saved.
+        """
+        urls = []
+        for make_model, tag_id in self.cargurus_car_ids.items():
+            url = self.url_maker(car_id=tag_id)
+            format_dict = {
+                "title": make_model.upper(),
+                "url": url
+            }
+
+            urls.append(format_dict)
+
         return urls
