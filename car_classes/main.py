@@ -1,10 +1,10 @@
 # imports
 import webbrowser
 
-from autotrader import AutoTrader
-from cargurus import CarGurus
-from cars_com import CarsCom
-from edmunds import Edmunds
+from car_classes.autotrader import AutoTrader
+from car_classes.cargurus import CarGurus
+from car_classes.cars_com import CarsCom
+from car_classes.edmunds import Edmunds
 
 
 def open_web_tabs(urls: list[str]):
