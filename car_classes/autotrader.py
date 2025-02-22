@@ -1,6 +1,6 @@
 class AutoTrader:
     """
-    AutoTrader class is used to generate URLs for car listings based on specific criteria.
+    AutoTrader class is used to generate URLs for car listings based on specific criteria
 
     This class takes in a zip code, maximum and minimum price, and a distance in miles from your current location,
     and then creates URLs for all the cars listed/saved inside of the class.
