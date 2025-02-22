@@ -1,6 +1,6 @@
 class Edmunds:
     """
-    A class used to generate URLs for car listings on Edmunds based on specified criteria.
+    A class used to generate URLs for car listings on Edmunds based on specified criteria
 
     Attributes
     ----------
