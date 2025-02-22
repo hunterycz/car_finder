@@ -1,4 +1,4 @@
-# imports
+# import
 import webbrowser
 
 from car_classes.autotrader import AutoTrader
