@@ -20,7 +20,7 @@ class CarsCom:
             Iterates over the saved car makes and models and generates a list of URLs.
     """
 
-    def __init__(self, zip_code: int = 85296, max_price: int = 10000, min_price: int = 0, distance: int = 50):
+    def __init__(self, zip_code: int = 85296, max_price: int = 10000, min_price: int = 1, distance: int = 50):
         self.zip_code = zip_code
         self.max_price = max_price
         self.min_price = min_price
