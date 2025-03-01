@@ -16,7 +16,7 @@ class Edmunds:
         A dictionary mapping car models to their respective makes.
     """
 
-    def __init__(self, zip_code: int = 85296, max_price: int = 50000, min_price: int = 0, distance: int = 50):
+    def __init__(self, zip_code: int = 85296, max_price: int = 50000, min_price: int = 1, distance: int = 50):
         """
         Initializes the Edmunds class with the specified ZIP code, price range, and search distance.
 
