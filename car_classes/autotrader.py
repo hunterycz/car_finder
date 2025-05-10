@@ -79,3 +79,4 @@ class AutoTrader:
             urls.append(format_dict)
 
         return urls
+ 
