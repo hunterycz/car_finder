@@ -37,4 +37,3 @@ open_web_tabs(auto_urls)
 open_web_tabs(cargurus_urls)
 open_web_tabs(cars_urls)
 open_web_tabs(edmunds_urls)
-
