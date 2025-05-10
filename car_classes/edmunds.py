@@ -98,3 +98,4 @@ class Edmunds:
             urls.append(format_dict)
 
         return urls
+ 
